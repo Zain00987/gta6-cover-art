@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Vice Cover Studio — GTA-style cover art maker</title>
+<link rel="icon" href="data:,">
+<link rel="stylesheet" href="./style.css">
+</head>
+<body>
+<header class="brand">
+  <div>
+    <h1>VICE COVER STUDIO</h1>
+    <p>Turn your photos into poster-style cover art. Everything runs on your machine — no uploads.</p>
+  </div>
+  <span class="badge">OFFLINE · PNG EXPORT</span>
+</header>
+<main class="editor">
+  <aside class="controls">
+    <section>
+      <h2>1 · Photos</h2>
+      <label class="file">Add photos from your machine
+        <input id="photos" type="file" accept="image/*" multiple>
+      </label>
+      <button id="samples" type="button">Use the two sample photos</button>
+      <div id="thumbs" class="thumbs" aria-label="Loaded photos"></div>
+      <p class="hint">Click a thumbnail to put it in the selected panel. Drag the preview to pan a photo.</p>
+    </section>
+    <section>
+      <h2>2 · Layout</h2>
+      <div id="layoutBtns" class="btnrow">
+        <button type="button" data-value="one">1 panel</button>
+        <button type="button" data-value="two">2 panels</button>
+        <button type="button" data-value="three">3 panels</button>
+        <button type="button" data-value="four">4 panels</button>
+      </div>
+    </section>
+    <section>
+      <h2>3 · Selected panel</h2>
+      <div id="panelBtns" class="btnrow"></div>
+      <label>Photo in this panel
+        <select id="panelPhoto"></select>
+      </label>
+      <label>Zoom <span id="zoomVal">1.0x</span>
+        <input id="zoom" type="range" min="1" max="3" step="0.05" value="1">
+      </label>
+      <button id="recenter" type="button">Center photo</button>
+    </section>
+    <section>
+      <h2>4 · Caption</h2>
+      <label>Caption
+        <input id="caption" type="text" maxlength="48" value="VICE CITY NIGHTS">
+      </label>
+      <label>Tagline
+        <input id="tagline" type="text" maxlength="60" value="A POSTER MADE WITH VICE COVER STUDIO">
+      </label>
+      <label>Caption size <span id="capSizeVal">100%</span>
+        <input id="capSize" type="range" min="0.6" max="1.6" step="0.05" value="1">
+      </label>
+      <div id="posBtns" class="btnrow">
+        <button type="button" data-value="bottom">Caption at bottom</button>
+        <button type="button" data-value="top">Caption at top</button>
+      </div>
+      <div id="colorBtns" class="btnrow swatches" aria-label="Caption colour">
+        <button type="button" data-value="#ffffff" style="background:#ffffff" aria-label="White"></button>
+        <button type="button" data-value="#ffd166" style="background:#ffd166" aria-label="Gold"></button>
+        <button type="button" data-value="#ff5c9e" style="background:#ff5c9e" aria-label="Pink"></button>
+        <button type="button" data-value="#00f0ff" style="background:#00f0ff" aria-label="Cyan"></button>
+        <button type="button" data-value="#111111" style="background:#111111" aria-label="Black"></button>
+      </div>
+      <label class="check"><input id="outline" type="checkbox" checked> Bold outline around the caption</label>
+    </section>
+    <section>
+      <h2>5 · Colour grade</h2>
+      <div id="gradeBtns" class="btnrow">
+        <button type="button" data-value="sunset">Sunset</button>
+        <button type="button" data-value="neon">Neon</button>
+        <button type="button" data-value="vice">Vice City</button>
+        <button type="button" data-value="noir">Noir</button>
+      </div>
+    </section>
+    <section>
+      <h2>6 · Export size</h2>
+      <div id="sizeBtns" class="btnrow">
+        <button type="button" data-value="1080x1080">1080 × 1080</button>
+        <button type="button" data-value="1080x1350">1080 × 1350</button>
+        <button type="button" data-value="1920x1080">1920 × 1080</button>
+      </div>
+      <button id="export" type="button" class="primary">Export PNG</button>
+      <p id="status" role="status"></p>
+    </section>
+  </aside>
+  <section class="preview">
+    <canvas id="cover" width="1080" height="1080" aria-label="Live cover preview"></canvas>
+    <p class="hint">Live preview — drag a panel to move its photo.</p>
+  </section>
+</main>
+<script type="module" src="./src/main.js"></script>
+</body>
+</html>
